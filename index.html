@@ -1,392 +1,533 @@
-<hr>
-<h3 id="-struktur-presentasi-standar-sistem-komunikasi-5g-"><strong>Struktur Presentasi: Standar Sistem Komunikasi 5G</strong></h3>
-<hr>
-<h4 id="-slide-1-halaman-judul-"><strong>Slide 1: Halaman Judul</strong></h4>
-<p><strong>Tugas 01: Standar Sistem Komunikasi</strong></p>
-<h3 id="-analisis-arsitektur-sistem-5g-5gs-"><strong>Analisis Arsitektur Sistem 5G (5GS)</strong></h3>
-<p><strong>(Logo Prodi/Universitas Anda)</strong></p>
-<p><strong>Kelompok [Nomor Kelompok]:</strong></p>
-<ul>
-<li>[Nama Anggota 1]</li>
-<li>[Nama Anggota 2]</li>
-<li>[Nama Anggota 3]</li>
-<li>[Nama Anggota 4]</li>
-</ul>
-<p><strong>Prodi STr. Teknik Telekomunikasi</strong>
-<strong>Kelas: [Kelas Anda]</strong>
-<strong>Pengampu: Amin Suharjono</strong>
-<strong>[Tanggal Presentasi]</strong></p>
-<hr>
-<h4 id="-slide-2-agenda-presentasi-"><strong>Slide 2: Agenda Presentasi</strong></h4>
-<p><strong>Agenda</strong></p>
-<ol>
-<li><p><strong>Judul &amp; Ruang Lingkup Standar</strong></p>
-<ul>
-<li>Membedah identitas dan tujuan dari dokumen standar 5G.</li>
-</ul>
-</li>
-<li><p><strong>Informasi Umum: Arsitektur &amp; Prinsip Dasar 5G</strong></p>
-<ul>
-<li>Memahami paradigma baru dan komponen utama dalam arsitektur 5G.</li>
-</ul>
-</li>
-<li><p><strong>Fitur Unggulan dan Spesifikasi Teknis</strong></p>
-<ul>
-<li>Menyelami fitur-fitur kunci yang mendefinisikan kemampuan 5G.</li>
-</ul>
-</li>
-<li><p><strong>Teknologi Terkait Antarmuka Radio (Radio Interface)</strong></p>
-<ul>
-<li>Menganalisis interaksi antara Jaringan Inti (5GC) dan Jaringan Akses Radio (NG-RAN).</li>
-</ul>
-</li>
-<li><p><strong>Kesimpulan</strong></p>
-</li>
-</ol>
-<hr>
-<h3 id="-bagian-1-judul-ruang-lingkup-standar-"><strong>BAGIAN 1: JUDUL &amp; RUANG LINGKUP STANDAR</strong></h3>
-<hr>
-<h4 id="-slide-3-detail-standar-teknologi-"><strong>Slide 3: Detail Standar Teknologi</strong></h4>
-<p><strong>Judul Standar Teknologi: Arsitektur Sistem 5G</strong></p>
-<ul>
-<li><strong>Judul Resmi:</strong> ETSI TS 123 501 V18.10.0 (2025-07)</li>
-<li><strong>Organisasi Pengembang:</strong> 3GPP (3rd Generation Partnership Project)</li>
-<li><strong>Referensi:</strong> 3GPP TS 23.501, Release 18 (&quot;5G-Advanced&quot;)</li>
-<li><strong>Fokus Dokumen:</strong> Mendefinisikan <strong>Arsitektur Stage 2</strong> untuk Sistem 5G (5GS).</li>
-</ul>
-<p><strong>Apa itu Arsitektur &quot;Stage 2&quot;?</strong></p>
-<ul>
-<li><strong>Stage 1:</strong> Kebutuhan layanan dari perspektif pengguna.</li>
-<li><strong>Stage 2 (Dokumen ini):</strong> Arsitektur Fungsional. Mendefinisikan blok-blok fungsional (<strong>Network Functions</strong>) dan bagaimana mereka berinteraksi.</li>
-<li><strong>Stage 3:</strong> Protokol dan prosedur detail untuk implementasi.</li>
-</ul>
-<blockquote>
-<p>Dokumen ini adalah &quot;blueprint&quot; arsitektur yang menjadi fondasi bagaimana seluruh ekosistem 5G bekerja.</p>
-</blockquote>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Jelaskan bahwa 3GPP adalah badan standardisasi global, dan ETSI adalah salah satu organisasi yang merilisnya untuk regional Eropa.</li>
-<li>Tekankan bahwa TS 23.501 adalah dokumen paling fundamental untuk memahami arsitektur 5G Core.</li>
-<li>Sebutkan bahwa Release 18 sering disebut sebagai &quot;5G-Advanced&quot;, yang berarti standar ini terus berkembang dengan fitur-fitur baru yang lebih canggih.</li>
-</ul>
-<hr>
-<h3 id="-bagian-2-informasi-umum-overview-"><strong>BAGIAN 2: INFORMASI UMUM (OVERVIEW)</strong></h3>
-<hr>
-<h4 id="-slide-4-visi-prinsip-kunci-arsitektur-5g-"><strong>Slide 4: Visi &amp; Prinsip Kunci Arsitektur 5G</strong></h4>
-<p><strong>Prinsip Desain Fundamental 5G</strong>
-<em>(berdasarkan Klausul 4.1)</em></p>
-<ul>
-<li><p><strong>[Icon Pemisahan]</strong>
-<strong>Separasi Control Plane (CP) &amp; User Plane (UP)</strong>
-Memisahkan fungsi kontrol (signaling) dari fungsi pengiriman data (traffic). Memungkinkan <em>scaling</em> independen dan <em>edge computing</em>.</p>
-</li>
-<li><p><strong>[Icon API/Services]</strong>
-<strong>Service-Based Architecture (SBA)</strong>
-Paradigma baru di mana <em>Network Functions</em> (NFs) menawarkan &quot;layanan&quot; melalui API, menggantikan antarmuka <em>point-to-point</em> yang kaku. Lebih modular dan <em>cloud-native</em>.</p>
-</li>
-<li><p><strong>[Icon Database]</strong>
-<strong>Stateless Network Functions</strong>
-Fungsi jaringan tidak menyimpan <em>state</em> secara permanen. Konteks UE disimpan terpusat di UDM, meningkatkan keandalan dan skalabilitas.</p>
-</li>
-<li><p><strong>[Icon Konektivitas]</strong>
-<strong>Converged Core untuk Beragam Akses</strong>
-Satu jaringan inti (5GC) yang dapat diakses melalui berbagai teknologi: 5G NR, Wi-Fi, dan bahkan jaringan kabel.</p>
-</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Ini adalah slide konsep tingkat tinggi. Jelaskan setiap poin sebagai evolusi signifikan dari arsitektur 4G/LTE.</li>
-<li>Contoh untuk CP/UP separation: UPF bisa diletakkan di dekat pabrik untuk latensi super rendah (URLLC), sementara AMF/SMF bisa tetap terpusat.</li>
-<li>Untuk SBA, jelaskan analogi seperti arsitektur <em>microservices</em> di dunia IT, yang membuat jaringan lebih lincah.</li>
-</ul>
-<hr>
-<h4 id="-slide-5-service-based-architecture-sba-sebuah-paradigma-baru-"><strong>Slide 5: Service-Based Architecture (SBA) - Sebuah Paradigma Baru</strong></h4>
-<p><strong>[Diagram sederhana: 4G vs 5G]</strong></p>
-<ul>
-<li><strong>Kiri (4G):</strong> Tunjukkan beberapa boks (MME, SGW, PGW) yang terhubung dengan garis-garis kaku berlabel (S11, S5, dll). Beri label &quot;Arsitektur Point-to-Point&quot;.</li>
-<li><strong>Kanan (5G):</strong> Tunjukkan beberapa boks (AMF, SMF, PCF) yang terhubung ke sebuah &quot;bus&quot; atau &quot;awan&quot; sentral berlabel &quot;Service Bus / SBI&quot;. Beri label &quot;Service-Based Architecture&quot;.</li>
-</ul>
-<p><strong>Komponen Utama SBA:</strong></p>
-<ul>
-<li><strong>Network Function (NF):</strong> Entitas fungsional (misal: AMF, SMF) yang menyediakan layanan.</li>
-<li><strong>NF Service:</strong> Kemampuan yang diekspos oleh sebuah NF.</li>
-<li><strong>NF Repository Function (NRF):</strong> Berfungsi sebagai &quot;Yellow Pages&quot;. NF mendaftarkan layanannya di NRF, dan NF lain dapat menemukan layanan yang mereka butuhkan melalui NRF.</li>
-</ul>
-<p><strong>Keuntungan:</strong></p>
-<ul>
-<li><strong>Fleksibilitas:</strong> Mudah menambah atau memperbarui fungsi jaringan.</li>
-<li><strong>Skalabilitas:</strong> Dapat di-scale secara dinamis seperti aplikasi cloud.</li>
-<li><strong>Efisiensi:</strong> Mendorong penggunaan kembali (reusability) fungsi.</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Gunakan slide ini untuk menjelaskan secara mendalam apa itu SBA karena ini adalah inti dari arsitektur 5GC.</li>
-<li>Tekankan bahwa NRF adalah &quot;otak&quot; dari <em>service discovery</em>, yang memungkinkan fleksibilitas ini. Tanpa NRF, SBA tidak akan efisien.</li>
-</ul>
-<hr>
-<h4 id="-slide-6-arsitektur-sistem-5g-5gs-non-roaming-"><strong>Slide 6: Arsitektur Sistem 5G (5GS) - Non-Roaming</strong></h4>
-<p><strong>[Diagram arsitektur yang disederhanakan dari Klausul 4.2.3, Figure 4.2.3-1]</strong>
-<em>(Diagram harus menunjukkan hubungan antara komponen utama)</em></p>
-<p><strong>Alur Utama:</strong></p>
-<ul>
-<li><strong>UE (User Equipment):</strong> Perangkat pengguna.</li>
-<li><strong>NG-RAN (Next-Gen Radio Access Network):</strong> Jaringan akses radio 5G.</li>
-<li><strong>UPF (User Plane Function):</strong> Gerbang lalu lintas data ke jaringan eksternal (DN).</li>
-<li><strong>AMF (Access &amp; Mobility Function):</strong> Titik terminasi untuk sinyal kontrol dari UE dan RAN.</li>
-<li><strong>SMF (Session Management Function):</strong> Mengelola sesi data PDU.</li>
-<li><strong>UDM, PCF, AUSF, NRF:</strong> Fungsi pendukung di <em>control plane</em>.</li>
-</ul>
-<p><strong>Antarmuka Kunci:</strong></p>
-<ul>
-<li><strong>N1:</strong> Antara UE dan AMF (membawa pesan NAS).</li>
-<li><strong>N2:</strong> Antara NG-RAN dan AMF (kontrol).</li>
-<li><strong>N3:</strong> Antara NG-RAN dan UPF (data pengguna).</li>
-<li><strong>N4:</strong> Antara SMF dan UPF (instruksi untuk penanganan data).</li>
-<li><strong>N6:</strong> Antara UPF dan Data Network (misalnya, Internet).</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Gunakan diagram untuk menjelaskan alur sinyal dan data.</li>
-<li>Contoh: &quot;Ketika UE ingin membuat koneksi data, ia mengirim pesan NAS melalui antarmuka <strong>N1</strong> ke <strong>AMF</strong>. AMF kemudian berkomunikasi dengan <strong>SMF</strong>. SMF lalu memberikan instruksi ke <strong>UPF</strong> melalui antarmuka <strong>N4</strong> untuk menyiapkan jalur data. Data pengguna kemudian mengalir dari <strong>NG-RAN</strong> ke <strong>UPF</strong> melalui tunnel <strong>N3</strong> dan keluar ke Internet melalui <strong>N6</strong>.&quot;</li>
-</ul>
-<hr>
-<h4 id="-slide-7-komponen-inti-network-functions-nfs-"><strong>Slide 7: Komponen Inti (Network Functions - NFs)</strong></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Kategori</th>
-<th style="text-align:left">Fungsi (NF)</th>
-<th style="text-align:left">Deskripsi Singkat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Control Plane</strong></td>
-<td style="text-align:left"><strong>AMF</strong> (Access &amp; Mobility Mgmt)</td>
-<td style="text-align:left">Mengelola registrasi, mobilitas, dan koneksi UE. Pintu gerbang N1/N2.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>SMF</strong> (Session Management)</td>
-<td style="text-align:left">Membuat, memodifikasi, dan menghapus PDU Session. Mengalokasikan IP &amp; memilih UPF.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>UDM</strong> (Unified Data Management)</td>
-<td style="text-align:left">Database utama untuk data pelanggan dan profil.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>PCF</strong> (Policy Control Function)</td>
-<td style="text-align:left">Menyediakan aturan kebijakan (QoS, charging) ke SMF.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>AUSF</strong> (Authentication Server)</td>
-<td style="text-align:left">Melakukan fungsi otentikasi.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>NRF</strong> (NF Repository Function)</td>
-<td style="text-align:left">Mendukung <em>service discovery</em> antar NF.</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"><strong>NSSF</strong> (Network Slice Selection)</td>
-<td style="text-align:left">Membantu AMF dalam memilih Network Slice yang tepat.</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>User Plane</strong></td>
-<td style="text-align:left"><strong>UPF</strong> (User Plane Function)</td>
-<td style="text-align:left">Meneruskan, memeriksa, dan menerapkan aturan QoS pada paket data pengguna.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Jelaskan secara singkat peran masing-masing NF. Anda bisa memberikan analogi dari 4G jika audiens familiar (misalnya, AMF mengambil sebagian peran MME; SMF mengambil peran manajemen sesi dari MME, SGW-C, dan PGW-C).</li>
-<li>Tekankan bahwa hanya UPF yang berada di jalur data pengguna secara langsung. Ini penting untuk performa dan latensi.</li>
-</ul>
-<hr>
-<h3 id="-bagian-3-fitur-unggulan-spesifikasi-"><strong>BAGIAN 3: FITUR UNGGULAN &amp; SPESIFIKASI</strong></h3>
-<hr>
-<h4 id="-slide-8-fitur-unggulan-1-network-slicing-"><strong>Slide 8: Fitur Unggulan 1: Network Slicing</strong></h4>
-<p><strong>Konsep: Satu Jaringan Fisik, Banyak Jaringan Virtual</strong>
-<em>(berdasarkan Klausul 5.15)</em></p>
-<p><strong>[Diagram konseptual: Sebuah infrastruktur fisik 5G di bawah, dengan 3 &quot;slice&quot; virtual di atasnya: satu untuk Mobile Broadband (eMBB), satu untuk mobil otonom (URLLC), satu untuk sensor IoT (mMTC)]</strong></p>
-<p><strong>Spesifikasi Teknis:</strong></p>
-<ul>
-<li><strong>Identifikasi Slice:</strong> Menggunakan <strong>S-NSSAI</strong> (<em>Single Network Slice Selection Assistance Information</em>).<ul>
-<li><strong>SST (Slice/Service Type):</strong> Tipe layanan (e.g., eMBB, URLLC).</li>
-<li><strong>SD (Slice Differentiator):</strong> Pembeda opsional.</li>
-</ul>
-</li>
-<li><strong>Fungsi Kunci:</strong> <strong>NSSF (Network Slice Selection Function)</strong> membantu AMF memilih <em>slice</em> yang diizinkan untuk UE berdasarkan langganan dan kebijakan jaringan.</li>
-<li><strong>Kapasitas UE:</strong> UE dapat terhubung ke hingga <strong>8 network slices</strong> secara bersamaan.</li>
-</ul>
-<p><strong>Manfaat:</strong></p>
-<ul>
-<li><strong>Kustomisasi Layanan:</strong> Mengoptimalkan sumber daya untuk kasus penggunaan spesifik.</li>
-<li><strong>Isolasi:</strong> Performa satu <em>slice</em> tidak terpengaruh oleh <em>slice</em> lain.</li>
-<li><strong>Peluang Bisnis Baru:</strong> Menawarkan &quot;Network as a Service&quot; untuk berbagai industri.</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Network Slicing adalah salah satu <em>selling point</em> utama 5G. Berikan contoh nyata:<ul>
-<li>Slice untuk event besar (konser): bandwidth tinggi (eMBB).</li>
-<li>Slice untuk pabrik pintar: latensi sangat rendah &amp; keandalan tinggi (URLLC).</li>
-<li>Slice untuk smart city: koneksi masif untuk jutaan sensor (mMTC).</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="-slide-9-fitur-unggulan-2-model-qos-berbasis-aliran-flow-based-"><strong>Slide 9: Fitur Unggulan 2: Model QoS Berbasis Aliran (Flow-Based)</strong></h4>
-<p><strong>Dari Bearer (4G) ke QoS Flow (5G)</strong>
-<em>(berdasarkan Klausul 5.7)</em></p>
-<p><strong>Konsep:</strong></p>
-<ul>
-<li>Setiap paket data pengguna dipetakan ke sebuah <strong>QoS Flow</strong>, bukan <em>EPS Bearer</em> yang lebih kaku.</li>
-<li>Memberikan kontrol kualitas layanan yang lebih granular dan dinamis.</li>
-</ul>
-<p><strong>Spesifikasi Teknis:</strong></p>
-<ul>
-<li><strong>Identifikasi:</strong><ul>
-<li><strong>QFI (QoS Flow Identifier):</strong> Mengidentifikasi QoS Flow di dalam tunnel N3.</li>
-<li><strong>5QI (5G QoS Identifier):</strong> Merepresentasikan sekumpulan parameter QoS (standar 1-9 atau dinamis).</li>
-</ul>
-</li>
-<li><strong>Parameter Kunci yang direpresentasikan oleh 5QI:</strong><ul>
-<li><strong>Resource Type:</strong> GBR (Guaranteed Bit Rate) atau Non-GBR.</li>
-<li><strong>Packet Delay Budget (PDB):</strong> Target maksimal latensi.</li>
-<li><strong>Packet Error Rate (PER):</strong> Target maksimal packet loss.</li>
-</ul>
-</li>
-<li><strong>Reflective QoS:</strong> UE dapat secara otomatis memetakan trafik <em>uplink</em> ke QoS Flow yang sama dengan trafik <em>downlink</em> yang diterima, mengurangi beban signaling.</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Jelaskan perbedaan mendasar dengan 4G. Di 4G, semua trafik dalam satu bearer (misalnya, untuk internet) mendapat perlakuan yang sama. Di 5G, dalam satu PDU Session (koneksi internet), video call bisa mendapat QoS Flow dengan prioritas tinggi, sementara browsing biasa mendapat prioritas lebih rendah.</li>
-</ul>
-<hr>
-<h4 id="-slide-10-fitur-unggulan-3-manajemen-sesi-kontinuitas-"><strong>Slide 10: Fitur Unggulan 3: Manajemen Sesi &amp; Kontinuitas</strong></h4>
-<p><strong>PDU Session: Lebih dari Sekadar Koneksi Internet</strong>
-<em>(berdasarkan Klausul 5.6)</em></p>
-<p><strong>1. Tipe PDU Session:</strong></p>
-<ul>
-<li><strong>IP (IPv4, IPv6, IPv4v6):</strong> Untuk akses internet standar.</li>
-<li><strong>Ethernet:</strong> Untuk layanan seperti koneksi LAN virtual (<em>enterprise networking</em>).</li>
-<li><strong>Unstructured:</strong> Untuk transfer data tanpa header IP, misalnya untuk beberapa skenario IoT atau <em>untethered XR</em>.</li>
-</ul>
-<p><strong>2. Session and Service Continuity (SSC) Mode:</strong></p>
-<ul>
-<li><p><strong>[Icon Gembok] SSC Mode 1 (IP Address Preservation):</strong></p>
-<ul>
-<li>PDU Session Anchor (UPF) tetap sama. Alamat IP dipertahankan saat UE bergerak. Mirip dengan 4G.</li>
-</ul>
-</li>
-<li><p><strong>[Icon Panah Putus-Sambung] SSC Mode 2 (Break Before Make):</strong></p>
-<ul>
-<li>Koneksi lama dilepas sebelum koneksi baru dibuat. Anchor UPF dan alamat IP dapat berubah.</li>
-</ul>
-</li>
-<li><p><strong>[Icon Dua Panah Paralel] SSC Mode 3 (Make Before Break):</strong></p>
-<ul>
-<li>Koneksi baru (Anchor UPF baru, IP baru) dibuat <strong>sebelum</strong> koneksi lama dilepas.</li>
-<li>Memastikan kontinuitas layanan yang mulus. Krusial untuk <em>edge computing</em> di mana UE harus terhubung ke UPF terdekat.</li>
-</ul>
-</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Jelaskan bahwa tipe PDU Session Ethernet &amp; Unstructured membuka peluang baru di luar smartphone.</li>
-<li>Fokus pada SSC Mode 3 sebagai inovasi penting. Contoh: UE bergerak dari satu <em>edge data center</em> ke <em>edge data center</em> lain. Dengan SSC Mode 3, sesi aplikasi tidak terputus karena koneksi ke <em>edge</em> baru sudah siap sebelum koneksi lama dilepas.</li>
-</ul>
-<hr>
-<h3 id="-bagian-4-teknologi-terkait-radio-interface-"><strong>BAGIAN 4: TEKNOLOGI TERKAIT RADIO INTERFACE</strong></h3>
-<hr>
-<h4 id="-slide-12-interaksi-core-network-5gc-dengan-radio-ng-ran-"><strong>Slide 12: Interaksi Core Network (5GC) dengan Radio (NG-RAN)</strong></h4>
-<p><strong>[Diagram yang menunjukkan blok 5GC dan blok NG-RAN, dengan antarmuka N2 dan N3 yang jelas di antara keduanya]</strong></p>
-<p><strong>Antarmuka Kunci:</strong></p>
-<ul>
-<li><p><strong>N2 (Control Plane): Antara NG-RAN ↔ AMF</strong></p>
-<ul>
-<li>Membawa pesan NAS (N1) antara UE dan AMF.</li>
-<li>Manajemen koneksi dan konteks UE (setup, modifikasi, rilis).</li>
-<li>Sinyal untuk <em>handover</em>.</li>
-<li>Pengiriman informasi bantuan dari AMF ke RAN.</li>
-</ul>
-</li>
-<li><p><strong>N3 (User Plane): Antara NG-RAN ↔ UPF</strong></p>
-<ul>
-<li>Tunnel GTP-U yang membawa seluruh paket data pengguna.</li>
-<li>Setiap paket di dalam tunnel memiliki header yang berisi <strong>QFI (QoS Flow Identifier)</strong>.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Prinsip Pemisahan:</strong></p>
-<ul>
-<li>NG-RAN tidak perlu tahu detail fungsi-fungsi di dalam 5GC (selain AMF dan UPF).</li>
-<li>AMF bertindak sebagai titik kontak tunggal untuk semua urusan <em>control plane</em> dari RAN.</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Jelaskan bagaimana pemisahan ini membuat arsitektur lebih bersih. NG-RAN hanya perlu &quot;berbicara&quot; dengan AMF untuk kontrol dan UPF untuk data.</li>
-<li>Tekankan lagi pentingnya QFI di tunnel N3, karena inilah cara NG-RAN tahu cara memprioritaskan paket data yang berbeda di antarmuka radio yang terbatas.</li>
-</ul>
-<hr>
-<h4 id="-slide-13-peran-5gc-dalam-manajemen-sumber-daya-radio-"><strong>Slide 13: Peran 5GC dalam Manajemen Sumber Daya Radio</strong></h4>
-<p><strong>Bagaimana Core Network Membantu Jaringan Radio</strong></p>
-<p><strong>1. Penegakan QoS (QoS Enforcement):</strong></p>
-<ul>
-<li><strong>SMF</strong> mengirimkan <strong>QoS Profile</strong> (berisi 5QI, ARP, GFBR/MFBR) ke NG-RAN (melalui AMF).</li>
-<li><strong>NG-RAN</strong> kemudian bertanggung jawab menerjemahkan QoS Profile ini menjadi konfigurasi teknis radio, seperti:<ul>
-<li>Konfigurasi <strong>Data Radio Bearer (DRB)</strong>.</li>
-<li>Prioritas penjadwalan (<em>scheduling weights</em>).</li>
-<li>Konfigurasi protokol RLC dan HARQ.</li>
-</ul>
-</li>
-</ul>
-<p><strong>2. Dukungan untuk RRC Inactive State:</strong></p>
-<ul>
-<li>Untuk memungkinkan transisi cepat dari <em>idle</em> ke <em>aktif</em>, 5G memperkenalkan <em>RRC Inactive</em>.</li>
-<li><strong>AMF</strong> memberikan <strong>&quot;RRC Inactive Assistance Information&quot;</strong> ke NG-RAN, yang berisi:<ul>
-<li>Registration Area yang dialokasikan untuk UE.</li>
-<li>Konfigurasi <em>paging</em> dan DRX UE.</li>
-<li>Informasi MICO mode.</li>
-</ul>
-</li>
-<li>Informasi ini membantu <strong>NG-RAN</strong> membuat keputusan cerdas tentang kapan dan bagaimana cara memindahkan UE ke state <code>RRC_INACTIVE</code>.</li>
-</ul>
-<p><strong>[Catatan untuk Presenter]:</strong></p>
-<ul>
-<li>Slide ini menunjukkan bahwa 5GC tidak hanya pasif, tetapi secara aktif memberikan informasi ke RAN untuk membantu optimisasi.</li>
-<li>Jelaskan bahwa <code>RRC_INACTIVE</code> adalah fitur penting untuk efisiensi daya pada perangkat IoT dan juga mengurangi latensi koneksi untuk smartphone.</li>
-</ul>
-<hr>
-<h4 id="-slide-14-kesimpulan-"><strong>Slide 14: Kesimpulan</strong></h4>
-<p><strong>Kesimpulan: Arsitektur 5G yang Fleksibel dan Berorientasi Layanan</strong></p>
-<ol>
-<li><p><strong>Paradigma Baru:</strong> 5G memperkenalkan <strong>Service-Based Architecture (SBA)</strong> dan <strong>pemisahan Control/User Plane</strong>, menciptakan fondasi yang modular, skalabel, dan siap untuk cloud.</p>
-</li>
-<li><p><strong>Berpusat pada Layanan:</strong> Fitur seperti <strong>Network Slicing</strong> dan <strong>Flow-Based QoS</strong> memungkinkan penyesuaian jaringan secara granular untuk memenuhi kebutuhan beragam layanan, mulai dari <em>streaming video</em> hingga kontrol robot industri.</p>
-</li>
-<li><p><strong>Kontinuitas dan Fleksibilitas:</strong> <strong>SSC Mode 3</strong> dan dukungan untuk berbagai tipe PDU Session (IP, Ethernet, Unstructured) memastikan kontinuitas layanan yang tinggi dan membuka peluang untuk kasus penggunaan di luar seluler tradisional.</p>
-</li>
-<li><p><strong>Sinergi Core &amp; Radio:</strong> Arsitektur 5G mendefinisikan interaksi yang cerdas antara <strong>5GC</strong> dan <strong>NG-RAN</strong> melalui antarmuka N2/N3, memungkinkan optimisasi <em>end-to-end</em> yang lebih baik.</p>
-</li>
-</ol>
-<blockquote>
-<p>Arsitektur 5G bukan sekadar evolusi, melainkan sebuah platform fundamental yang dirancang untuk mendukung inovasi layanan di masa depan.</p>
-</blockquote>
-<hr>
-<h4 id="-slide-15-referensi-tanya-jawab-"><strong>Slide 15: Referensi &amp; Tanya Jawab</strong></h4>
-<p><strong>Referensi Utama</strong></p>
-<ul>
-<li><strong>ETSI TS 123 501 V18.10.0 (2025-07)</strong><ul>
-<li><em>5G; System architecture for the 5G System (5GS) (3GPP TS 23.501 version 18.10.0 Release 18)</em></li>
-</ul>
-</li>
-</ul>
-<p><strong>Terima Kasih</strong></p>
-<h3 id="-ada-pertanyaan-"><strong>Ada Pertanyaan?</strong></h3>
-<hr>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi: Standar Sistem Komunikasi 5G</title>
+    <style>
+        /* CSS untuk membuat tampilan lebih rapi */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 25px 40px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #0056b3; /* Warna biru untuk judul */
+            line-height: 1.3;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+        }
+
+        h3 {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        h4 strong {
+            background-color: #0056b3;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background-color: #dee2e6;
+            margin: 60px 0; /* Jarak antar "slide" */
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+        
+        ul ul, ol ul {
+            margin-top: 0.5em;
+        }
+
+        blockquote {
+            border-left: 5px solid #007bff;
+            background-color: #e9f2ff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        blockquote p {
+            margin: 0;
+        }
+
+        code {
+            background-color: #e9ecef;
+            color: #c7254e;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #0056b3;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f8f9fa;
+        }
+        
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Media query untuk tampilan mobile */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            main {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- KONTEN ANDA DIMULAI DARI SINI -->
+        <hr>
+        <h3 id="-struktur-presentasi-standar-sistem-komunikasi-5g-"><strong>Struktur Presentasi: Standar Sistem Komunikasi 5G</strong></h3>
+        <hr>
+        <h4 id="-slide-1-halaman-judul-"><strong>Slide 1: Halaman Judul</strong></h4>
+        <p><strong>Tugas 01: Standar Sistem Komunikasi</strong></p>
+        <h3 id="-analisis-arsitektur-sistem-5g-5gs-"><strong>Analisis Arsitektur Sistem 5G (5GS)</strong></h3>
+        <p><strong>(Logo Prodi/Universitas Anda)</strong></p>
+        <p><strong>Kelompok [Nomor Kelompok]:</strong></p>
+        <ul>
+        <li>[Nama Anggota 1]</li>
+        <li>[Nama Anggota 2]</li>
+        <li>[Nama Anggota 3]</li>
+        <li>[Nama Anggota 4]</li>
+        </ul>
+        <p><strong>Prodi STr. Teknik Telekomunikasi</strong>
+        <strong>Kelas: [Kelas Anda]</strong>
+        <strong>Pengampu: Amin Suharjono</strong>
+        <strong>[Tanggal Presentasi]</strong></p>
+        <hr>
+        <h4 id="-slide-2-agenda-presentasi-"><strong>Slide 2: Agenda Presentasi</strong></h4>
+        <p><strong>Agenda</strong></p>
+        <ol>
+        <li><p><strong>Judul &amp; Ruang Lingkup Standar</strong></p>
+        <ul>
+        <li>Membedah identitas dan tujuan dari dokumen standar 5G.</li>
+        </ul>
+        </li>
+        <li><p><strong>Informasi Umum: Arsitektur &amp; Prinsip Dasar 5G</strong></p>
+        <ul>
+        <li>Memahami paradigma baru dan komponen utama dalam arsitektur 5G.</li>
+        </ul>
+        </li>
+        <li><p><strong>Fitur Unggulan dan Spesifikasi Teknis</strong></p>
+        <ul>
+        <li>Menyelami fitur-fitur kunci yang mendefinisikan kemampuan 5G.</li>
+        </ul>
+        </li>
+        <li><p><strong>Teknologi Terkait Antarmuka Radio (Radio Interface)</strong></p>
+        <ul>
+        <li>Menganalisis interaksi antara Jaringan Inti (5GC) dan Jaringan Akses Radio (NG-RAN).</li>
+        </ul>
+        </li>
+        <li><p><strong>Kesimpulan</strong></p>
+        </li>
+        </ol>
+        <hr>
+        <h3 id="-bagian-1-judul-ruang-lingkup-standar-"><strong>BAGIAN 1: JUDUL &amp; RUANG LINGKUP STANDAR</strong></h3>
+        <hr>
+        <h4 id="-slide-3-detail-standar-teknologi-"><strong>Slide 3: Detail Standar Teknologi</strong></h4>
+        <p><strong>Judul Standar Teknologi: Arsitektur Sistem 5G</strong></p>
+        <ul>
+        <li><strong>Judul Resmi:</strong> ETSI TS 123 501 V18.10.0 (2025-07)</li>
+        <li><strong>Organisasi Pengembang:</strong> 3GPP (3rd Generation Partnership Project)</li>
+        <li><strong>Referensi:</strong> 3GPP TS 23.501, Release 18 (&quot;5G-Advanced&quot;)</li>
+        <li><strong>Fokus Dokumen:</strong> Mendefinisikan <strong>Arsitektur Stage 2</strong> untuk Sistem 5G (5GS).</li>
+        </ul>
+        <p><strong>Apa itu Arsitektur &quot;Stage 2&quot;?</strong></p>
+        <ul>
+        <li><strong>Stage 1:</strong> Kebutuhan layanan dari perspektif pengguna.</li>
+        <li><strong>Stage 2 (Dokumen ini):</strong> Arsitektur Fungsional. Mendefinisikan blok-blok fungsional (<strong>Network Functions</strong>) dan bagaimana mereka berinteraksi.</li>
+        <li><strong>Stage 3:</strong> Protokol dan prosedur detail untuk implementasi.</li>
+        </ul>
+        <blockquote>
+        <p>Dokumen ini adalah &quot;blueprint&quot; arsitektur yang menjadi fondasi bagaimana seluruh ekosistem 5G bekerja.</p>
+        </blockquote>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Jelaskan bahwa 3GPP adalah badan standardisasi global, dan ETSI adalah salah satu organisasi yang merilisnya untuk regional Eropa.</li>
+        <li>Tekankan bahwa TS 23.501 adalah dokumen paling fundamental untuk memahami arsitektur 5G Core.</li>
+        <li>Sebutkan bahwa Release 18 sering disebut sebagai &quot;5G-Advanced&quot;, yang berarti standar ini terus berkembang dengan fitur-fitur baru yang lebih canggih.</li>
+        </ul>
+        <hr>
+        <h3 id="-bagian-2-informasi-umum-overview-"><strong>BAGIAN 2: INFORMASI UMUM (OVERVIEW)</strong></h3>
+        <hr>
+        <h4 id="-slide-4-visi-prinsip-kunci-arsitektur-5g-"><strong>Slide 4: Visi &amp; Prinsip Kunci Arsitektur 5G</strong></h4>
+        <p><strong>Prinsip Desain Fundamental 5G</strong>
+        <em>(berdasarkan Klausul 4.1)</em></p>
+        <ul>
+        <li><p><strong>[Icon Pemisahan]</strong>
+        <strong>Separasi Control Plane (CP) &amp; User Plane (UP)</strong>
+        Memisahkan fungsi kontrol (signaling) dari fungsi pengiriman data (traffic). Memungkinkan <em>scaling</em> independen dan <em>edge computing</em>.</p>
+        </li>
+        <li><p><strong>[Icon API/Services]</strong>
+        <strong>Service-Based Architecture (SBA)</strong>
+        Paradigma baru di mana <em>Network Functions</em> (NFs) menawarkan &quot;layanan&quot; melalui API, menggantikan antarmuka <em>point-to-point</em> yang kaku. Lebih modular dan <em>cloud-native</em>.</p>
+        </li>
+        <li><p><strong>[Icon Database]</strong>
+        <strong>Stateless Network Functions</strong>
+        Fungsi jaringan tidak menyimpan <em>state</em> secara permanen. Konteks UE disimpan terpusat di UDM, meningkatkan keandalan dan skalabilitas.</p>
+        </li>
+        <li><p><strong>[Icon Konektivitas]</strong>
+        <strong>Converged Core untuk Beragam Akses</strong>
+        Satu jaringan inti (5GC) yang dapat diakses melalui berbagai teknologi: 5G NR, Wi-Fi, dan bahkan jaringan kabel.</p>
+        </li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Ini adalah slide konsep tingkat tinggi. Jelaskan setiap poin sebagai evolusi signifikan dari arsitektur 4G/LTE.</li>
+        <li>Contoh untuk CP/UP separation: UPF bisa diletakkan di dekat pabrik untuk latensi super rendah (URLLC), sementara AMF/SMF bisa tetap terpusat.</li>
+        <li>Untuk SBA, jelaskan analogi seperti arsitektur <em>microservices</em> di dunia IT, yang membuat jaringan lebih lincah.</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-5-service-based-architecture-sba-sebuah-paradigma-baru-"><strong>Slide 5: Service-Based Architecture (SBA) - Sebuah Paradigma Baru</strong></h4>
+        <p><strong>[Diagram sederhana: 4G vs 5G]</strong></p>
+        <ul>
+        <li><strong>Kiri (4G):</strong> Tunjukkan beberapa boks (MME, SGW, PGW) yang terhubung dengan garis-garis kaku berlabel (S11, S5, dll). Beri label &quot;Arsitektur Point-to-Point&quot;.</li>
+        <li><strong>Kanan (5G):</strong> Tunjukkan beberapa boks (AMF, SMF, PCF) yang terhubung ke sebuah &quot;bus&quot; atau &quot;awan&quot; sentral berlabel &quot;Service Bus / SBI&quot;. Beri label &quot;Service-Based Architecture&quot;.</li>
+        </ul>
+        <p><strong>Komponen Utama SBA:</strong></p>
+        <ul>
+        <li><strong>Network Function (NF):</strong> Entitas fungsional (misal: AMF, SMF) yang menyediakan layanan.</li>
+        <li><strong>NF Service:</strong> Kemampuan yang diekspos oleh sebuah NF.</li>
+        <li><strong>NF Repository Function (NRF):</strong> Berfungsi sebagai &quot;Yellow Pages&quot;. NF mendaftarkan layanannya di NRF, dan NF lain dapat menemukan layanan yang mereka butuhkan melalui NRF.</li>
+        </ul>
+        <p><strong>Keuntungan:</strong></p>
+        <ul>
+        <li><strong>Fleksibilitas:</strong> Mudah menambah atau memperbarui fungsi jaringan.</li>
+        <li><strong>Skalabilitas:</strong> Dapat di-scale secara dinamis seperti aplikasi cloud.</li>
+        <li><strong>Efisiensi:</strong> Mendorong penggunaan kembali (reusability) fungsi.</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Gunakan slide ini untuk menjelaskan secara mendalam apa itu SBA karena ini adalah inti dari arsitektur 5GC.</li>
+        <li>Tekankan bahwa NRF adalah &quot;otak&quot; dari <em>service discovery</em>, yang memungkinkan fleksibilitas ini. Tanpa NRF, SBA tidak akan efisien.</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-6-arsitektur-sistem-5g-5gs-non-roaming-"><strong>Slide 6: Arsitektur Sistem 5G (5GS) - Non-Roaming</strong></h4>
+        <p><strong>[Diagram arsitektur yang disederhanakan dari Klausul 4.2.3, Figure 4.2.3-1]</strong>
+        <em>(Diagram harus menunjukkan hubungan antara komponen utama)</em></p>
+        <p><strong>Alur Utama:</strong></p>
+        <ul>
+        <li><strong>UE (User Equipment):</strong> Perangkat pengguna.</li>
+        <li><strong>NG-RAN (Next-Gen Radio Access Network):</strong> Jaringan akses radio 5G.</li>
+        <li><strong>UPF (User Plane Function):</strong> Gerbang lalu lintas data ke jaringan eksternal (DN).</li>
+        <li><strong>AMF (Access &amp; Mobility Function):</strong> Titik terminasi untuk sinyal kontrol dari UE dan RAN.</li>
+        <li><strong>SMF (Session Management Function):</strong> Mengelola sesi data PDU.</li>
+        <li><strong>UDM, PCF, AUSF, NRF:</strong> Fungsi pendukung di <em>control plane</em>.</li>
+        </ul>
+        <p><strong>Antarmuka Kunci:</strong></p>
+        <ul>
+        <li><strong>N1:</strong> Antara UE dan AMF (membawa pesan NAS).</li>
+        <li><strong>N2:</strong> Antara NG-RAN dan AMF (kontrol).</li>
+        <li><strong>N3:</strong> Antara NG-RAN dan UPF (data pengguna).</li>
+        <li><strong>N4:</strong> Antara SMF dan UPF (instruksi untuk penanganan data).</li>
+        <li><strong>N6:</strong> Antara UPF dan Data Network (misalnya, Internet).</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Gunakan diagram untuk menjelaskan alur sinyal dan data.</li>
+        <li>Contoh: &quot;Ketika UE ingin membuat koneksi data, ia mengirim pesan NAS melalui antarmuka <strong>N1</strong> ke <strong>AMF</strong>. AMF kemudian berkomunikasi dengan <strong>SMF</strong>. SMF lalu memberikan instruksi ke <strong>UPF</strong> melalui antarmuka <strong>N4</strong> untuk menyiapkan jalur data. Data pengguna kemudian mengalir dari <strong>NG-RAN</strong> ke <strong>UPF</strong> melalui tunnel <strong>N3</strong> dan keluar ke Internet melalui <strong>N6</strong>.&quot;</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-7-komponen-inti-network-functions-nfs-"><strong>Slide 7: Komponen Inti (Network Functions - NFs)</strong></h4>
+        <table>
+        <thead>
+        <tr>
+        <th style="text-align:left">Kategori</th>
+        <th style="text-align:left">Fungsi (NF)</th>
+        <th style="text-align:left">Deskripsi Singkat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td style="text-align:left"><strong>Control Plane</strong></td>
+        <td style="text-align:left"><strong>AMF</strong> (Access &amp; Mobility Mgmt)</td>
+        <td style="text-align:left">Mengelola registrasi, mobilitas, dan koneksi UE. Pintu gerbang N1/N2.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>SMF</strong> (Session Management)</td>
+        <td style="text-align:left">Membuat, memodifikasi, dan menghapus PDU Session. Mengalokasikan IP &amp; memilih UPF.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>UDM</strong> (Unified Data Management)</td>
+        <td style="text-align:left">Database utama untuk data pelanggan dan profil.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>PCF</strong> (Policy Control Function)</td>
+        <td style="text-align:left">Menyediakan aturan kebijakan (QoS, charging) ke SMF.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>AUSF</strong> (Authentication Server)</td>
+        <td style="text-align:left">Melakukan fungsi otentikasi.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>NRF</strong> (NF Repository Function)</td>
+        <td style="text-align:left">Mendukung <em>service discovery</em> antar NF.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"></td>
+        <td style="text-align:left"><strong>NSSF</strong> (Network Slice Selection)</td>
+        <td style="text-align:left">Membantu AMF dalam memilih Network Slice yang tepat.</td>
+        </tr>
+        <tr>
+        <td style="text-align:left"><strong>User Plane</strong></td>
+        <td style="text-align:left"><strong>UPF</strong> (User Plane Function)</td>
+        <td style="text-align:left">Meneruskan, memeriksa, dan menerapkan aturan QoS pada paket data pengguna.</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Jelaskan secara singkat peran masing-masing NF. Anda bisa memberikan analogi dari 4G jika audiens familiar (misalnya, AMF mengambil sebagian peran MME; SMF mengambil peran manajemen sesi dari MME, SGW-C, dan PGW-C).</li>
+        <li>Tekankan bahwa hanya UPF yang berada di jalur data pengguna secara langsung. Ini penting untuk performa dan latensi.</li>
+        </ul>
+        <hr>
+        <h3 id="-bagian-3-fitur-unggulan-spesifikasi-"><strong>BAGIAN 3: FITUR UNGGULAN &amp; SPESIFIKASI</strong></h3>
+        <hr>
+        <h4 id="-slide-8-fitur-unggulan-1-network-slicing-"><strong>Slide 8: Fitur Unggulan 1: Network Slicing</strong></h4>
+        <p><strong>Konsep: Satu Jaringan Fisik, Banyak Jaringan Virtual</strong>
+        <em>(berdasarkan Klausul 5.15)</em></p>
+        <p><strong>[Diagram konseptual: Sebuah infrastruktur fisik 5G di bawah, dengan 3 &quot;slice&quot; virtual di atasnya: satu untuk Mobile Broadband (eMBB), satu untuk mobil otonom (URLLC), satu untuk sensor IoT (mMTC)]</strong></p>
+        <p><strong>Spesifikasi Teknis:</strong></p>
+        <ul>
+        <li><strong>Identifikasi Slice:</strong> Menggunakan <strong>S-NSSAI</strong> (<em>Single Network Slice Selection Assistance Information</em>).<ul>
+        <li><strong>SST (Slice/Service Type):</strong> Tipe layanan (e.g., eMBB, URLLC).</li>
+        <li><strong>SD (Slice Differentiator):</strong> Pembeda opsional.</li>
+        </ul>
+        </li>
+        <li><strong>Fungsi Kunci:</strong> <strong>NSSF (Network Slice Selection Function)</strong> membantu AMF memilih <em>slice</em> yang diizinkan untuk UE berdasarkan langganan dan kebijakan jaringan.</li>
+        <li><strong>Kapasitas UE:</strong> UE dapat terhubung ke hingga <strong>8 network slices</strong> secara bersamaan.</li>
+        </ul>
+        <p><strong>Manfaat:</strong></p>
+        <ul>
+        <li><strong>Kustomisasi Layanan:</strong> Mengoptimalkan sumber daya untuk kasus penggunaan spesifik.</li>
+        <li><strong>Isolasi:</strong> Performa satu <em>slice</em> tidak terpengaruh oleh <em>slice</em> lain.</li>
+        <li><strong>Peluang Bisnis Baru:</strong> Menawarkan &quot;Network as a Service&quot; untuk berbagai industri.</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Network Slicing adalah salah satu <em>selling point</em> utama 5G. Berikan contoh nyata:<ul>
+        <li>Slice untuk event besar (konser): bandwidth tinggi (eMBB).</li>
+        <li>Slice untuk pabrik pintar: latensi sangat rendah &amp; keandalan tinggi (URLLC).</li>
+        <li>Slice untuk smart city: koneksi masif untuk jutaan sensor (mMTC).</li>
+        </ul>
+        </li>
+        </ul>
+        <hr>
+        <h4 id="-slide-9-fitur-unggulan-2-model-qos-berbasis-aliran-flow-based-"><strong>Slide 9: Fitur Unggulan 2: Model QoS Berbasis Aliran (Flow-Based)</strong></h4>
+        <p><strong>Dari Bearer (4G) ke QoS Flow (5G)</strong>
+        <em>(berdasarkan Klausul 5.7)</em></p>
+        <p><strong>Konsep:</strong></p>
+        <ul>
+        <li>Setiap paket data pengguna dipetakan ke sebuah <strong>QoS Flow</strong>, bukan <em>EPS Bearer</em> yang lebih kaku.</li>
+        <li>Memberikan kontrol kualitas layanan yang lebih granular dan dinamis.</li>
+        </ul>
+        <p><strong>Spesifikasi Teknis:</strong></p>
+        <ul>
+        <li><strong>Identifikasi:</strong><ul>
+        <li><strong>QFI (QoS Flow Identifier):</strong> Mengidentifikasi QoS Flow di dalam tunnel N3.</li>
+        <li><strong>5QI (5G QoS Identifier):</strong> Merepresentasikan sekumpulan parameter QoS (standar 1-9 atau dinamis).</li>
+        </ul>
+        </li>
+        <li><strong>Parameter Kunci yang direpresentasikan oleh 5QI:</strong><ul>
+        <li><strong>Resource Type:</strong> GBR (Guaranteed Bit Rate) atau Non-GBR.</li>
+        <li><strong>Packet Delay Budget (PDB):</strong> Target maksimal latensi.</li>
+        <li><strong>Packet Error Rate (PER):</strong> Target maksimal packet loss.</li>
+        </ul>
+        </li>
+        <li><strong>Reflective QoS:</strong> UE dapat secara otomatis memetakan trafik <em>uplink</em> ke QoS Flow yang sama dengan trafik <em>downlink</em> yang diterima, mengurangi beban signaling.</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Jelaskan perbedaan mendasar dengan 4G. Di 4G, semua trafik dalam satu bearer (misalnya, untuk internet) mendapat perlakuan yang sama. Di 5G, dalam satu PDU Session (koneksi internet), video call bisa mendapat QoS Flow dengan prioritas tinggi, sementara browsing biasa mendapat prioritas lebih rendah.</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-10-fitur-unggulan-3-manajemen-sesi-kontinuitas-"><strong>Slide 10: Fitur Unggulan 3: Manajemen Sesi &amp; Kontinuitas</strong></h4>
+        <p><strong>PDU Session: Lebih dari Sekadar Koneksi Internet</strong>
+        <em>(berdasarkan Klausul 5.6)</em></p>
+        <p><strong>1. Tipe PDU Session:</strong></p>
+        <ul>
+        <li><strong>IP (IPv4, IPv6, IPv4v6):</strong> Untuk akses internet standar.</li>
+        <li><strong>Ethernet:</strong> Untuk layanan seperti koneksi LAN virtual (<em>enterprise networking</em>).</li>
+        <li><strong>Unstructured:</strong> Untuk transfer data tanpa header IP, misalnya untuk beberapa skenario IoT atau <em>untethered XR</em>.</li>
+        </ul>
+        <p><strong>2. Session and Service Continuity (SSC) Mode:</strong></p>
+        <ul>
+        <li><p><strong>[Icon Gembok] SSC Mode 1 (IP Address Preservation):</strong></p>
+        <ul>
+        <li>PDU Session Anchor (UPF) tetap sama. Alamat IP dipertahankan saat UE bergerak. Mirip dengan 4G.</li>
+        </ul>
+        </li>
+        <li><p><strong>[Icon Panah Putus-Sambung] SSC Mode 2 (Break Before Make):</strong></p>
+        <ul>
+        <li>Koneksi lama dilepas sebelum koneksi baru dibuat. Anchor UPF dan alamat IP dapat berubah.</li>
+        </ul>
+        </li>
+        <li><p><strong>[Icon Dua Panah Paralel] SSC Mode 3 (Make Before Break):</strong></p>
+        <ul>
+        <li>Koneksi baru (Anchor UPF baru, IP baru) dibuat <strong>sebelum</strong> koneksi lama dilepas.</li>
+        <li>Memastikan kontinuitas layanan yang mulus. Krusial untuk <em>edge computing</em> di mana UE harus terhubung ke UPF terdekat.</li>
+        </ul>
+        </li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Jelaskan bahwa tipe PDU Session Ethernet &amp; Unstructured membuka peluang baru di luar smartphone.</li>
+        <li>Fokus pada SSC Mode 3 sebagai inovasi penting. Contoh: UE bergerak dari satu <em>edge data center</em> ke <em>edge data center</em> lain. Dengan SSC Mode 3, sesi aplikasi tidak terputus karena koneksi ke <em>edge</em> baru sudah siap sebelum koneksi lama dilepas.</li>
+        </ul>
+        <hr>
+        <h3 id="-bagian-4-teknologi-terkait-radio-interface-"><strong>BAGIAN 4: TEKNOLOGI TERKAIT RADIO INTERFACE</strong></h3>
+        <hr>
+        <h4 id="-slide-12-interaksi-core-network-5gc-dengan-radio-ng-ran-"><strong>Slide 12: Interaksi Core Network (5GC) dengan Radio (NG-RAN)</strong></h4>
+        <p><strong>[Diagram yang menunjukkan blok 5GC dan blok NG-RAN, dengan antarmuka N2 dan N3 yang jelas di antara keduanya]</strong></p>
+        <p><strong>Antarmuka Kunci:</strong></p>
+        <ul>
+        <li><p><strong>N2 (Control Plane): Antara NG-RAN ↔ AMF</strong></p>
+        <ul>
+        <li>Membawa pesan NAS (N1) antara UE dan AMF.</li>
+        <li>Manajemen koneksi dan konteks UE (setup, modifikasi, rilis).</li>
+        <li>Sinyal untuk <em>handover</em>.</li>
+        <li>Pengiriman informasi bantuan dari AMF ke RAN.</li>
+        </ul>
+        </li>
+        <li><p><strong>N3 (User Plane): Antara NG-RAN ↔ UPF</strong></p>
+        <ul>
+        <li>Tunnel GTP-U yang membawa seluruh paket data pengguna.</li>
+        <li>Setiap paket di dalam tunnel memiliki header yang berisi <strong>QFI (QoS Flow Identifier)</strong>.</li>
+        </ul>
+        </li>
+        </ul>
+        <p><strong>Prinsip Pemisahan:</strong></p>
+        <ul>
+        <li>NG-RAN tidak perlu tahu detail fungsi-fungsi di dalam 5GC (selain AMF dan UPF).</li>
+        <li>AMF bertindak sebagai titik kontak tunggal untuk semua urusan <em>control plane</em> dari RAN.</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Jelaskan bagaimana pemisahan ini membuat arsitektur lebih bersih. NG-RAN hanya perlu &quot;berbicara&quot; dengan AMF untuk kontrol dan UPF untuk data.</li>
+        <li>Tekankan lagi pentingnya QFI di tunnel N3, karena inilah cara NG-RAN tahu cara memprioritaskan paket data yang berbeda di antarmuka radio yang terbatas.</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-13-peran-5gc-dalam-manajemen-sumber-daya-radio-"><strong>Slide 13: Peran 5GC dalam Manajemen Sumber Daya Radio</strong></h4>
+        <p><strong>Bagaimana Core Network Membantu Jaringan Radio</strong></p>
+        <p><strong>1. Penegakan QoS (QoS Enforcement):</strong></p>
+        <ul>
+        <li><strong>SMF</strong> mengirimkan <strong>QoS Profile</strong> (berisi 5QI, ARP, GFBR/MFBR) ke NG-RAN (melalui AMF).</li>
+        <li><strong>NG-RAN</strong> kemudian bertanggung jawab menerjemahkan QoS Profile ini menjadi konfigurasi teknis radio, seperti:<ul>
+        <li>Konfigurasi <strong>Data Radio Bearer (DRB)</strong>.</li>
+        <li>Prioritas penjadwalan (<em>scheduling weights</em>).</li>
+        <li>Konfigurasi protokol RLC dan HARQ.</li>
+        </ul>
+        </li>
+        </ul>
+        <p><strong>2. Dukungan untuk RRC Inactive State:</strong></p>
+        <ul>
+        <li>Untuk memungkinkan transisi cepat dari <em>idle</em> ke <em>aktif</em>, 5G memperkenalkan <em>RRC Inactive</em>.</li>
+        <li><strong>AMF</strong> memberikan <strong>&quot;RRC Inactive Assistance Information&quot;</strong> ke NG-RAN, yang berisi:<ul>
+        <li>Registration Area yang dialokasikan untuk UE.</li>
+        <li>Konfigurasi <em>paging</em> dan DRX UE.</li>
+        <li>Informasi MICO mode.</li>
+        </ul>
+        </li>
+        <li>Informasi ini membantu <strong>NG-RAN</strong> membuat keputusan cerdas tentang kapan dan bagaimana cara memindahkan UE ke state <code>RRC_INACTIVE</code>.</li>
+        </ul>
+        <p><strong>[Catatan untuk Presenter]:</strong></p>
+        <ul>
+        <li>Slide ini menunjukkan bahwa 5GC tidak hanya pasif, tetapi secara aktif memberikan informasi ke RAN untuk membantu optimisasi.</li>
+        <li>Jelaskan bahwa <code>RRC_INACTIVE</code> adalah fitur penting untuk efisiensi daya pada perangkat IoT dan juga mengurangi latensi koneksi untuk smartphone.</li>
+        </ul>
+        <hr>
+        <h4 id="-slide-14-kesimpulan-"><strong>Slide 14: Kesimpulan</strong></h4>
+        <p><strong>Kesimpulan: Arsitektur 5G yang Fleksibel dan Berorientasi Layanan</strong></p>
+        <ol>
+        <li><p><strong>Paradigma Baru:</strong> 5G memperkenalkan <strong>Service-Based Architecture (SBA)</strong> dan <strong>pemisahan Control/User Plane</strong>, menciptakan fondasi yang modular, skalabel, dan siap untuk cloud.</p>
+        </li>
+        <li><p><strong>Berpusat pada Layanan:</strong> Fitur seperti <strong>Network Slicing</strong> dan <strong>Flow-Based QoS</strong> memungkinkan penyesuaian jaringan secara granular untuk memenuhi kebutuhan beragam layanan, mulai dari <em>streaming video</em> hingga kontrol robot industri.</p>
+        </li>
+        <li><p><strong>Kontinuitas dan Fleksibilitas:</strong> <strong>SSC Mode 3</strong> dan dukungan untuk berbagai tipe PDU Session (IP, Ethernet, Unstructured) memastikan kontinuitas layanan yang tinggi dan membuka peluang untuk kasus penggunaan di luar seluler tradisional.</p>
+        </li>
+        <li><p><strong>Sinergi Core &amp; Radio:</strong> Arsitektur 5G mendefinisikan interaksi yang cerdas antara <strong>5GC</strong> dan <strong>NG-RAN</strong> melalui antarmuka N2/N3, memungkinkan optimisasi <em>end-to-end</em> yang lebih baik.</p>
+        </li>
+        </ol>
+        <blockquote>
+        <p>Arsitektur 5G bukan sekadar evolusi, melainkan sebuah platform fundamental yang dirancang untuk mendukung inovasi layanan di masa depan.</p>
+        </blockquote>
+        <hr>
+        <h4 id="-slide-15-referensi-tanya-jawab-"><strong>Slide 15: Referensi &amp; Tanya Jawab</strong></h4>
+        <p><strong>Referensi Utama</strong></p>
+        <ul>
+        <li><strong>ETSI TS 123 501 V18.10.0 (2025-07)</strong><ul>
+        <li><em>5G; System architecture for the 5G System (5GS) (3GPP TS 23.501 version 18.10.0 Release 18)</em></li>
+        </ul>
+        </li>
+        </ul>
+        <p><strong>Terima Kasih</strong></p>
+        <h3 id="-ada-pertanyaan-"><strong>Ada Pertanyaan?</strong></h3>
+        <hr>
+        <!-- KONTEN ANDA BERAKHIR DI SINI -->
+    </main>
+</body>
+</html>
