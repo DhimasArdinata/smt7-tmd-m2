@@ -5,129 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentasi: Standar Sistem Komunikasi 5G</title>
     <style>
-        /* CSS untuk membuat tampilan lebih rapi */
+        /* --- GitHub Theme CSS --- */
+        :root {
+            --color-canvas-default: #f6f8fa; /* GitHub page background */
+            --color-canvas-inset: #f6f8fa; /* Table header, blockquote bg */
+            --color-fg-default: #1f2328;    /* Main text color */
+            --color-fg-muted: #57606a;     /* Muted text color */
+            --color-accent-fg: #0969da;     /* Link color */
+            --color-border-default: #d0d7de; /* Standard border color */
+            --color-border-muted: #d8dee4;   /* Lighter border for tables */
+            --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            line-height: 1.7;
-            background-color: #f8f9fa;
-            color: #212529;
+            font-family: var(--font-family-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--color-canvas-default);
+            color: var(--color-fg-default);
             margin: 0;
-            padding: 20px;
+            padding: 32px;
         }
 
         main {
             max-width: 900px;
-            margin: 20px auto;
+            margin: 0 auto;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            padding: 25px 40px;
+            border: 1px solid var(--color-border-default);
+            border-radius: 6px;
+            padding: 24px 32px;
         }
 
+        /* --- Headers --- */
         h1, h2, h3, h4, h5, h6 {
-            color: #0056b3; /* Warna biru untuk judul */
-            line-height: 1.3;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
+            margin-top: 24px;
+            margin-bottom: 16px;
             font-weight: 600;
+            line-height: 1.25;
+            color: var(--color-fg-default);
         }
 
+        /* Section Titles (e.g., BAGIAN 1) */
         h3 {
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 10px;
+            font-size: 1.5em; /* 24px */
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--color-border-muted);
+        }
+
+        /* Slide Titles (e.g., Slide 1) */
+        h4 {
+            font-size: 1.25em; /* 20px */
         }
         
+        /* Turn "Slide X:" into a label-like element */
         h4 strong {
-            background-color: #0056b3;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-fg-muted);
+            background-color: transparent; /* Remove previous styling */
+            padding: 0;
+            margin-right: 8px;
         }
-
+        
+        /* --- Horizontal Rule (Separator) --- */
         hr {
+            height: .25em;
+            padding: 0;
+            margin: 48px 0;
+            background-color: var(--color-canvas-default);
             border: 0;
-            height: 2px;
-            background-color: #dee2e6;
-            margin: 60px 0; /* Jarak antar "slide" */
+        }
+        main > hr:first-of-type {
+            display: none;
         }
 
+        /* --- Content Elements --- */
         p {
-            margin-bottom: 1em;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        
+        a {
+            color: var(--color-accent-fg);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
 
         ul, ol {
-            padding-left: 25px;
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-left: 2em;
         }
 
         li {
             margin-bottom: 0.5em;
         }
-        
-        ul ul, ol ul {
-            margin-top: 0.5em;
-        }
-
-        blockquote {
-            border-left: 5px solid #007bff;
-            background-color: #e9f2ff;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-style: italic;
-        }
-        
-        blockquote p {
-            margin: 0;
-        }
 
         code {
-            background-color: #e9ecef;
-            color: #c7254e;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            font-family: var(--font-family-mono);
+            background-color: rgba(175,184,193,0.2);
+            border-radius: 6px;
         }
 
+        /* --- Blockquote --- */
+        blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: var(--color-fg-muted);
+            border-left: .25em solid var(--color-border-default);
+        }
+        blockquote p {
+            margin-bottom: 0;
+        }
+
+        /* --- Table Styling --- */
         table {
             width: 100%;
+            margin-top: 0;
+            margin-bottom: 16px;
             border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: block;
+            overflow: auto; /* For responsive tables */
         }
 
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px;
-            text-align: left;
+        table th, table td {
+            padding: 6px 13px;
+            border: 1px solid var(--color-border-default);
+        }
+        
+        table th {
+            font-weight: 600;
         }
 
-        thead {
-            background-color: #0056b3;
-            color: #ffffff;
-            font-weight: bold;
+        table thead {
+            background-color: var(--color-canvas-inset);
         }
 
-        tbody tr:nth-child(odd) {
-            background-color: #f8f9fa;
+        table tbody tr {
+            background-color: #ffffff;
         }
-        
-        a {
-            color: #007bff;
-            text-decoration: none;
+
+        table tbody tr:nth-child(2n) {
+            background-color: var(--color-canvas-inset);
         }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Media query untuk tampilan mobile */
+
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 16px;
             }
             main {
-                padding: 20px 15px;
+                padding: 16px;
             }
         }
     </style>
